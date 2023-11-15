@@ -12,12 +12,13 @@ const counterSlice = createSlice({
         //   logics to update the state
 
         // function to increment number
-        increment: (state) => {
-            state.value += 1
+        // if its an argument function thhan it can only be accessed by action and value in payload
+        increment: (state,action) => {
+            state.value += action.payload
         },
         // function to decremnet number
-        decrement: (state) => {
-            state.value -= 1
+        decrement: (state,action) => {
+            state.value -= action.payload
         },
         //function to reset number
         reset: (state) => {
@@ -26,7 +27,7 @@ const counterSlice = createSlice({
     }
 })
 
-// action is redquired by component inorderto update state
+// action is redquired by component inorder to update state
 export const{increment,decrement,reset} = counterSlice.actions
 
 // reducer is required to store to change the state value
